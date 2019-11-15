@@ -31,7 +31,7 @@ export const dropByCacheKey = key => {
   }
 
   if (cache instanceof CacheComponent) {
-    dropComponent(cache)
+    return dropComponent(cache)
   } else {
     Object.values(cache).forEach(dropComponent)
   }

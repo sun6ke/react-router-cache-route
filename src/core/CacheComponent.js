@@ -281,8 +281,10 @@ export default class CacheComponent extends Component {
   reset = () => {
     delete this.__revertScrollPos
 
-    this.setState({
-      cached: false
+    return new Promise((resolve, reject) => {
+      this.setState({
+        cached: false
+      }, resolve);
     })
   }
 

@@ -359,7 +359,7 @@
     }
 
     if (cache instanceof CacheComponent) {
-      dropComponent(cache);
+      return dropComponent(cache);
     } else {
       Object.values(cache).forEach(dropComponent);
     }
@@ -530,8 +530,10 @@
       _this.reset = function () {
         delete _this.__revertScrollPos;
 
-        _this.setState({
-          cached: false
+        return new Promise(function (resolve, reject) {
+          _this.setState({
+            cached: false
+          }, resolve);
         });
       };
 
